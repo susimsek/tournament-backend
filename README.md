@@ -70,3 +70,4 @@ docker-compose -f deploy/docker/docker-compose.yaml up -d
 * Mongodb
 * Graphql
 * Spring Boot
+* Spring Boot Test
