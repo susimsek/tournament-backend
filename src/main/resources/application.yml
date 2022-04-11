@@ -1,0 +1,58 @@
+server:
+  forward-headers-strategy: framework
+  port: ${PORT:9091}
+  shutdown: graceful
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: tournament
+  jackson:
+    deserialization:
+      adjust-dates-to-context-time-zone: false
+    serialization:
+      write-dates-as-timestamps: false
+  application:
+    name: tournament-app
+
+security:
+  authentication:
+    token:
+      base64-secret: NjhkOGZmNmY4NGQ1ODFiMjI5M2JjZTJmYTRlMWVjNmM2Nzk2YjFiZTc2Nzc3MjMxMTE4Njg2ZjlhNTRhNmE0YmZhMzI5MDczZjQyZTZlZDFlYzdhZGZkYTUzZGUyMTMyM2VkZWRmNTEwZGQzNzc1YzIwMGRmYTFiNzAwNmI4Njc=
+      token-validity-in-seconds: 86400
+graphql:
+  tools:
+    schema-location-pattern: "**/*.graphqls"
+  servlet:
+    exception-handlers-enabled: true
+  playground:
+    cdn:
+      enabled: true
+    enabled: true
+    headers:
+      Authorization: Bearer TOKEN
+    endpoint: /graphql
+    tabs:
+      - name: Login
+        query: classpath:playground/token.graphql
+      - name: User
+        query: classpath:playground/user.graphql
+        variables: classpath:playground/variable/user.json
+      - name: Tournament
+        query: classpath:playground/tournament.graphql
+        variables: classpath:playground/variable/tournament.json
+  extended-scalars: NonNegativeInt, Date, DateTime
+

@@ -1,0 +1,31 @@
+type Tournament {
+    id: ID
+    name: String
+    players: [User!],
+    owner: User,
+    createdDate: DateTime
+}
+
+input CreateTournamentInput {
+    name: String
+    userIds: [String!]
+}
+
+input UpdateTournamentInput {
+    name: String
+    userIds: [String!]
+}
+
+extend type Mutation {
+    createTournament(tournament: CreateTournamentInput!): Tournament
+    updateTournament(id: ID!, tournament: UpdateTournamentInput!): Tournament
+    cancelTournament(id: ID!): Boolean
+    joinTournament(id: ID!): Tournament
+    leaveTournament(id: ID!): Tournament
+}
+
+extend type Query {
+    tournament(id: ID!): Tournament
+    tournaments: [Tournament]
+    myTournaments: [Tournament]
+}

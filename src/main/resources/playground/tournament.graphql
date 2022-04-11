@@ -1,0 +1,140 @@
+# Create Tournament
+mutation CreateTournament($name: String!, $playerIds: [String!]) {
+    createTournament(tournament: { name: $name, userIds: $playerIds }) {
+        id
+        name
+        players {
+            id
+            username
+            email
+        }
+        owner {
+            id
+            username
+            email
+        }
+        createdDate
+    }
+}
+
+# Update Tournament
+mutation UpdateTournament($id: ID!, $name: String!, $playerIds: [String!]) {
+    updateTournament(
+        id: $id,
+        tournament: { name: $name, userIds: $playerIds }) {
+        id
+        name
+        players {
+            id
+            username
+            email
+        }
+        owner {
+            id
+            username
+            email
+        }
+        createdDate
+    }
+}
+
+# Cancel Tournament
+mutation CancelTournament($id: ID!) {
+    cancelTournament(id: $id)
+}
+
+# Get Tournament
+query GetTournament($id: ID!) {
+    tournament(id: $id) {
+        id
+        name
+        players {
+            id
+            username
+            email
+        }
+        owner {
+            id
+            username
+            email
+        }
+        createdDate
+    }
+}
+
+
+# Get Tournaments
+query GetTournaments {
+    tournaments {
+        id
+        name
+        players {
+            id
+            username
+            email
+        }
+        owner {
+            id
+            username
+            email
+        }
+        createdDate
+    }
+}
+
+# Get My Tournaments
+query GetMyTournaments {
+    myTournaments {
+        id
+        name
+        players {
+            id
+            username
+            email
+        }
+        owner {
+            id
+            username
+            email
+        }
+        createdDate
+    }
+}
+
+# Join Tournament
+mutation JoinTournament($id: ID!) {
+    joinTournament(id: $id) {
+        id
+        name
+        players {
+            id
+            username
+            email
+        }
+        owner {
+            id
+            username
+            email
+        }
+        createdDate
+    }
+}
+
+# Leave Tournament
+mutation LeaveTournament($id: ID!) {
+   leaveTournament(id: $id) {
+        id
+        name
+        players {
+            id
+            username
+            email
+        }
+        owner {
+            id
+            username
+            email
+        }
+       createdDate
+    }
+}

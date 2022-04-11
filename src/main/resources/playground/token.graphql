@@ -1,0 +1,6 @@
+# Login user
+mutation Login {
+    login(credentials: { username: "test", password: "1234" }) {
+        token
+    }
+}

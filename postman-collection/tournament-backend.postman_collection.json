@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "e876287c-3b64-4143-aa07-821321030c3a",
+		"name": "tournament-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Login {\n    login(credentials: { username: \"test\", password: \"1234\" }) {\n        token\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation CreateUser($username: String!, $email: String!) {\n    createUser(\n        user: { username: $username, password: \"1234\", email: $email }\n    ) {\n        id\n        username\n        email\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"username\": \"test\",\n  \"email\": \"test@example.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetUser($id: ID!) {\n    user(id: $id) {\n        id\n        username\n        email\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"username\": \"test\",\n  \"email\": \"test@example.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetCurrentUser {\n    currentUser {\n        id\n        username\n        email\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"username\": \"test\",\n  \"email\": \"test@example.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetUsers {\n    users {\n        id\n        username\n        email\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"username\": \"test\",\n  \"email\": \"test@example.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tournament",
+			"item": [
+				{
+					"name": "Create Tournament",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation CreateTournament($name: String!, $playerIds: [String!]) {\n    createTournament(tournament: { name: $name, userIds: $playerIds }) {\n        id\n        name\n        players {\n            id\n            username\n            email\n        }\n        owner {\n            id\n            username\n            email\n        }\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"name\": \"test\",\n  \"playerIds\": [\n    \"6251422baa67d32f6b23aff4\",\n    \"625159a25dc0b50c449b2402\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Tournament",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation UpdateTournament($id: ID!, $name: String!, $playerIds: [String!]) {\n    updateTournament(\n        id: $id,\n        tournament: { name: $name, userIds: $playerIds }) {\n        id\n        name\n        players {\n            id\n            username\n            email\n        }\n        owner {\n            id\n            username\n            email\n        }\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"name\": \"test\",\n  \"playerIds\": [\n    \"6251422baa67d32f6b23aff4\",\n    \"625159a25dc0b50c449b2402\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Tournament",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation CancelTournament($id: ID!) {\n    cancelTournament(id: $id)\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"name\": \"test\",\n  \"playerIds\": [\n    \"6251422baa67d32f6b23aff4\",\n    \"625159a25dc0b50c449b2402\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tournament",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetTournament($id: ID!) {\n    tournament(id: $id) {\n        id\n        name\n        players {\n            id\n            username\n            email\n        }\n        owner {\n            id\n            username\n            email\n        }\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"name\": \"test\",\n  \"playerIds\": [\n    \"6251422baa67d32f6b23aff4\",\n    \"625159a25dc0b50c449b2402\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tournaments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetTournaments {\n    tournaments {\n        id\n        name\n        players {\n            id\n            username\n            email\n        }\n        owner {\n            id\n            username\n            email\n        }\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"name\": \"test\",\n  \"playerIds\": [\n    \"6251422baa67d32f6b23aff4\",\n    \"625159a25dc0b50c449b2402\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Tournaments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetMyTournaments {\n    myTournaments {\n        id\n        name\n        players {\n            id\n            username\n            email\n        }\n        owner {\n            id\n            username\n            email\n        }\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"name\": \"test\",\n  \"playerIds\": [\n    \"6251422baa67d32f6b23aff4\",\n    \"625159a25dc0b50c449b2402\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Join Tournament",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetMyTournaments {\n    myTournaments {\n        id\n        name\n        players {\n            id\n            username\n            email\n        }\n        owner {\n            id\n            username\n            email\n        }\n        createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"name\": \"test\",\n  \"playerIds\": [\n    \"6251422baa67d32f6b23aff4\",\n    \"625159a25dc0b50c449b2402\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leave Tournament",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2MjUyZjcyMDFlMDcyZjNhNGJlMjJmOGIiLCJleHAiOjE2NDk3MDU5OTF9.eqEiCqBhrIf1w_Ue6C_rrHnnTlc0C-FVS5KDz9qAnbqqVk9MRThIMpu00mEMmsDytZW8aBiuOCZistJgUr0xbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation LeaveTournament($id: ID!) {\n   leaveTournament(id: $id) {\n        id\n        name\n        players {\n            id\n            username\n            email\n        }\n        owner {\n            id\n            username\n            email\n        }\n       createdDate\n    }\n}",
+								"variables": "{\n  \"id\": \"6251422baa67d32f6b23aff4\",\n  \"name\": \"test\",\n  \"playerIds\": [\n    \"6251422baa67d32f6b23aff4\",\n    \"625159a25dc0b50c449b2402\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

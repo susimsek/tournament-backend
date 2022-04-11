@@ -1,0 +1,18 @@
+# Create Tournament
+mutation CreateTournament {
+    createTournament(tournament: { name: "test",
+        userIds: ["6251422baa67d32f6b23aff4", "625159a25dc0b50c449b2402"] }) {
+        id
+        name
+        players {
+            id
+            username
+            email
+        }
+        owner {
+            id
+            username
+            email
+        }
+    }
+}
