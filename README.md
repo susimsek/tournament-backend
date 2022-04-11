@@ -69,5 +69,6 @@ docker-compose -f deploy/docker/docker-compose.yaml up -d
 * Docker
 * Mongodb
 * Graphql
+* Jwt Token 
 * Spring Boot
 * Spring Boot Test
