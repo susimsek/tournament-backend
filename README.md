@@ -1,6 +1,8 @@
-# Tournament Backend Spring Boot GraphQL 
+# Tournament Backend Kotlin & Spring Boot GraphQL 
 
 Tournament Backend GraphQL API using MongoDB
+
+<img src="https://github.com/susimsek/tournament-backend/blob/main/images/introduction.png" alt="Spring Boot Kotlin Graphql Tournament GraphQL API" width="100%" height="100%"/> 
 
 
 ## Playground
