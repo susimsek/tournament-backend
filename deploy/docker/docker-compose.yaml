@@ -1,0 +1,37 @@
+version: '3.8'
+
+volumes:
+  mongodb:
+
+networks:
+  test:
+    name: backend_test
+
+services:
+  api:
+    image: suayb/tournament-api
+    restart: unless-stopped
+    container_name: api
+    networks:
+      - test
+    environment:
+      - PORT=9091
+      - SPRING_DATA_MONGODB_URI=mongodb://admin:root@mongodb:27017/tournament
+    ports:
+      - "9091:9091"
+
+  mongodb:
+    image: bitnami/mongodb:5.0
+    restart: unless-stopped
+    container_name: mongodb
+    networks:
+      - test
+    environment:
+      - MONGODB_USERNAME=admin
+      - MONGODB_PASSWORD=root
+      - MONGODB_DATABASE=tournament
+      - MONGODB_ROOT_PASSWORD=1234
+    volumes:
+      - mongodb:/bitnami/mongodb
+    ports:
+      - "27017:27017"
